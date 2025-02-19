@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SanityLive } from "@/sanity/lib/live";
 //import { inter } from '@/app/ui/font';
 import "../globals.css";
 import Navbar from "@/app/ui/Navbar";
@@ -43,6 +44,7 @@ export default function RootLayout({
         <main className="w-full mx-auto max-w-full md:max-w-[840px] xl:max-w-[1040px] px-4 md:px-0 mt-[5rem]">
           {children}
         </main>
+        <SanityLive />
       </body>
     </html>
   );
