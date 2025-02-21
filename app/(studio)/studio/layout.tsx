@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-//import { inter } from '@/app/ui/font';
 
 export const metadata: Metadata = {
   title: {

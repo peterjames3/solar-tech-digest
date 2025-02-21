@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-//import { inter } from '@/app/ui/font';
-import "../globals.css";
-import { SanityLive } from "@/sanity/lib/live";
+
+//import { SanityLive } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: {
@@ -23,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         {children}
-        <SanityLive />
+        {/* <SanityLive /> */}
       </body>
     </html>
   );

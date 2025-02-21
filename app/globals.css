@@ -11,6 +11,7 @@
   --tertiary: #e2e8d5;
   --textColor: #333333;
   --FooterBg: #09130d;
+  --error: hsl(5, 85%, 63%);
 }
 
 body {

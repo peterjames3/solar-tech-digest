@@ -16,6 +16,7 @@ export default {
         tertiary: "var(--tertiary)",
         textColor: "var(--textColor)",
         footerBg: "var(--footerBg)",
+        error: "var(--error)",
       },
     },
   },
