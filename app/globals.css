@@ -3,6 +3,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --background: #f8f9fa;
   --foreground: #171717;
@@ -14,14 +17,171 @@
   --error: hsl(5, 85%, 63%);
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: "Inter", sans-serif;
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
 }
+@theme inline {
+  --color-background: var(--background);
+  /* Font family */
+  --font-poppins: Poppins, sans-serif;
+  --font-inter: Inter, sans-serif;
+
+  /* Colors */
+  --color-background: #f8f9fa;
+  --color-foreground: #171717;
+  --color-banner: #506d37;
+  --color-primary: #2e8b57;
+  --color-secondary: #6e804d;
+  --color-accent: #e8f9f1;
+  --color-accent2: #d9f3d8;
+  --color-accent3: #acecbb;
+  --color-cardBg: #e5e5e5;
+  --color-cardBg-support1: #ffeeeb;
+  --color-cardBg-support2: #b2d7ff;
+  --color-cardBg-support3: #e8f9f1;
+
+  --color-tertiary: #e2e8d5;
+  --color-tertiary-30: rgba(229, 229, 229, 0.3);
+  --color-tertiary-white: #1e2915;
+  --color-error: hsl(5, 85%, 63%);
+  --color-active-link: #4eb959;
+  --color-default-link: #b3e7b3;
+  --color-hover-link: #81d487;
+  --color-button-login-default: #2b9e3b;
+  --color-button-login-hover: #1c7f2b;
+  --color-button-login-active: #176526;
+  --color-button-login-disabled: #d9f3d8;
+  --color-button-textColor: #f8f9fa;
+  --color-button-textColor-disabled: #4eb959;
+  --color-button-textColor-hover: #f8f9fa;
+  --color-button-signout: #effaef;
+  --color-notificationBg: #151a234d;
+  --color-notification-hovered: #151a232d;
+
+  /* Status color */
+  --color-status-pending: #233bb2;
+  --color-status-active: #d9f3d8;
+  --color-status-completed: #b3e7b3;
+  --color-status-cancelled: #b26623;
+  --color-status-failed: #4eb959;
+
+  /* Font sizes */
+  --text-display: 2.25rem;
+  --text-headline: 1.5rem;
+  --text-title: 0.875rem;
+  --text-p: 0.75rem;
+
+  /* Responsive font sizes */
+  --text-display-sm: 2.4125rem;
+  --text-display-md: 2.7875rem;
+  --text-display-lg: 2.8625rem;
+
+  --text-headline-sm: 1.65rem;
+  --text-headline-md: 1.775rem;
+  --text-headline-lg: 1.8rem;
+
+  --text-title-sm: 1rem;
+  --text-title-md: 1.1875rem;
+  --text-title-lg: 1.375rem;
+
+  --text-p-sm: 0.875rem;
+  --text-p-md: 0.9375rem;
+  --text-p-lg: 1rem;
+
+  --text-label-lg: 0.875rem;
+  --text-label-md: 0.75rem;
+  --text-label-sm: 0.6875rem;
+}
+@layer utilities {
+  .display {
+    font-size: var(--text-display);
+    font-weight: bold;
+
+    @media (min-width: 640px) {
+      font-size: var(--text-display-sm);
+    }
+
+    @media (min-width: 768px) {
+      font-size: var(--text-display-md);
+    }
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-display-lg);
+    }
+  }
+
+  .headline {
+    font-size: var(--text-headline);
+    font-weight: medium;
+
+    @media (min-width: 640px) {
+      font-size: var(--text-headline-sm);
+    }
+
+    @media (min-width: 768px) {
+      font-size: var(--text-headline-md);
+    }
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-headline-lg);
+    }
+  }
+
+  .title {
+    font-size: var(--text-title);
+    font-weight: medium;
+
+    @media (min-width: 640px) {
+      font-size: var(--text-title-sm);
+    }
+
+    @media (min-width: 768px) {
+      font-size: var(--text-title-md);
+    }
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-title-lg);
+    }
+  }
+
+  .p-text {
+    font-size: var(--text-p);
+    font-weight: normal;
+
+    @media (min-width: 640px) {
+      font-size: var(--text-p-sm);
+    }
+
+    @media (min-width: 768px) {
+      font-size: var(--text-p-md);
+    }
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-p-lg);
+    }
+  }
+  .label-text {
+    font-size: var(--text-label-sm);
+    font-weight: normal;
+
+    @media (min-width: 640px) {
+      font-size: var(--text-label-md);
+    }
+
+    @media (min-width: 768px) {
+      font-size: var(--text-label-lg);
+    }
+  }
+}
+
 @layer components {
   .btn-category {
     @apply text-[13px] font-normal py-2 px-[9.1rem] rounded-[8px] text-textColor bg-tertiary;
+  }
+  .wrapper {
+    @apply w-full mx-auto max-w-full md:max-w-[840px] lg:max-w-[1240px] xl:max-w-[1240px] px-4 md:px-4;
   }
 }
 

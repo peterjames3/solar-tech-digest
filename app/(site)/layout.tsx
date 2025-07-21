@@ -41,9 +41,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <main className="w-full mx-auto max-w-full md:max-w-[840px] xl:max-w-[1040px] px-4 md:px-0 mt-[5rem]">
-          {children}
-        </main>
+        <main className="">{children}</main>
         {/* <SanityLive /> */}
       </body>
     </html>

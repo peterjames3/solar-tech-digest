@@ -11,9 +11,9 @@ export default function Hero() {
   ];
 
   return (
-    <section className="w-full flex flex-col md:flex-row py-2 gap-12 md:gap-10 min-h-[45rem]">
+    <section className=" wrapper px-4 md:px-0 mt-[5rem] py-20 flex flex-col md:flex-row  gap-12 md:gap-10 min-h-[30rem]">
       {/* Text Content */}
-      <div className="min-h-[35rem] w-full flex flex-col py-12 md:w-1/2 text-center md:text-start space-y-4 ">
+      <div className=" w-full flex flex-col py-12 md:w-1/2 text-center md:text-start space-y-4 ">
         <header>
           <span className="bg-tertiary text-primary px-6 py-2 text-sm rounded-full font-semibold">
             Blog

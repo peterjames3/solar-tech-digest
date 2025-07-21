@@ -14,18 +14,18 @@ const companies = [
 ];
 export default function FeaturedCompany() {
   return (
-    <section id="Features-companies" className=" w-full my-12">
+    <section id="Features-companies" className=" wrapper px-2 md:px-0  py-6">
       <header>
-        <h2 className="title text-foreground">
-          Discover the leading solar companies whose products are featured in
-          our blog
+        <h2 className="headline text-foreground">
+          Discover the leading solar companies whose products
+          <br /> are featured in our blog
         </h2>
       </header>
       <div className="flex flex-wrap gap-5">
         {/* Logos Grid */}
         <div
           aria-label="list of solar companies brand logo"
-          className="mt-6 flex flex-wrap justify-center gap-6"
+          className="mt-10 flex flex-wrap justify-center gap-6"
         >
           {companies.map((company, index) => (
             <div
