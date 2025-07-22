@@ -99,7 +99,7 @@ const SanityImage = ({ value }: SanityImageProps) => {
     .url();
 
   return (
-    <figure className="relative w-full h-64 my-8">
+    <figure className="relative w-full h-64 my-8 mb-2">
       <div className="relative w-full h-full">
         <Image
           src={imageUrl}

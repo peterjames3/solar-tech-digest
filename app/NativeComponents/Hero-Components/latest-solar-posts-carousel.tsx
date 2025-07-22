@@ -116,14 +116,18 @@ export default function LatestSolarPostsCarousel({
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60" />
             <div className="absolute bottom-4 left-4 text-white z-10 pr-5">
               <Link
-                href={post.slug.current || "#"}
+                href={`/${post.slug.current}`}
                 className="text-sm font-semibold hover:underline"
               >
                 {post.title || "Untitled Post"}
               </Link>
               <div className="flex justify-between text-sm mt-2">
                 <span>{post.authorName || "Unknown Author"}</span>
-                <span>{format(new Date(post._createdAt), "MM/dd/yyyy")}</span>
+                <span>
+                  {post._createdAt
+                    ? format(new Date(post._createdAt), "MM/dd/yyyy")
+                    : "Unknown Date"}
+                </span>
               </div>
             </div>
           </motion.div>

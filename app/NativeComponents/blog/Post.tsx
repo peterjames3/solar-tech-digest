@@ -24,15 +24,12 @@ export default function Post({ post }: { post: SanityDocument }) {
   if (!post) return <p>Loading ...</p>;
 
   return (
-    <div className="w-full mx-auto max-w-full md:max-w-[840px] xl:max-w-[1440px] px-4 md:px-0 mt-[10rem]">
+    <div className="wrapper px-4 md:px-0 mt-[10rem]">
       <ul className="flex gap-[0.5rem] p-text mb-3 sm:ml-[13px] ">
         <li className="hover:text-primary font-semibold transition-color delay-300">
           <Link href="/">Home</Link>
         </li>
-        <li>&gt;</li>
-        <li className="hover:text-primary font-semibold transition-color delay-300">
-          <Link href="/blog">Blog</Link>
-        </li>
+
         <li>&gt;</li>
 
         <li className="hover:text-primary font-semibold transition-color delay-300">
@@ -41,8 +38,8 @@ export default function Post({ post }: { post: SanityDocument }) {
       </ul>
       <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Left Social Share - Sticky */}
-        <section className="col-span-1 p-4 h-auto md:min-h-[30rem] md:sticky md:top-7 md:h-screen overflow-y-auto">
-          <div className="sm:sticky sm:top-26 flex flex-col  gap-8">
+        <section className="col-span-1 p-4 h-auto md:min-h-[30rem] md:sticky md:top-[6.5rem] md:h-screen overflow-y-auto z-10">
+          <div className="sm:sticky sm:top-2 flex flex-col  gap-8">
             {/* Ensure post.headings is an array, even if empty */}
             <div className="mb-5">
               <TableOfContents headings={post.headings || []} />
@@ -55,8 +52,11 @@ export default function Post({ post }: { post: SanityDocument }) {
         </section>
         <section className="col-span-2 p-4 prose prose-xl ">
           <header className=" py-2 flex flex-col space-y-8">
-            <nav className=" ">
-              <Link href="/blog" className=" btn ">
+            <nav className=" flex items-center gap-1">
+              <Link
+                href="/"
+                className=" p-text no-underline hover:text-primary font-medium transition-color delay-300"
+              >
                 <span className="mr-[0.2rem]"> &larr;</span>
                 Go Back
               </Link>
@@ -64,7 +64,7 @@ export default function Post({ post }: { post: SanityDocument }) {
             <h3 className="text-3xl font-semibold text-foreground">
               {post.title}
             </h3>
-            <span className="text-[0.97rem] font-medium text-tertiary-white">
+            <span className="text-[0.97rem] font-medium text-secondary">
               Written on: {format(new Date(post._createdAt), "MM/dd/yyyy")}
             </span>
           </header>
@@ -83,18 +83,24 @@ export default function Post({ post }: { post: SanityDocument }) {
             )}
           </figure>
           <figcaption className="flex flex-col pt-4 space-y-2">
-            <div className=" flex gap-2 items-center p-text text-textColor font-semibold">
+            <div className=" flex items-center gap-2 justify-start">
               {" "}
-              <span className="font-bold">Category: </span>
-              {post.categories.map((category: Category, id: number) => (
-                <h3 className="font-medium" key={id}>
-                  {category.title}
-                </h3>
-              )) || "Uncategorized post"}
+              <div className="pt-2">
+                <span className="text-[1.1rem] font-semibold text-foreground ">
+                  Category:{" "}
+                </span>
+              </div>
+              <div>
+                {post.categories.map((category: Category, id: number) => (
+                  <h3 className="p-text" key={id}>
+                    {category.title}
+                  </h3>
+                )) || "Uncategorized post"}
+              </div>
             </div>
-            <p className="label-text font-medium ">
+            <p className="text-[1.1rem]  ">
               {" "}
-              <span className="font-semibold">written by : </span>{" "}
+              <span className="font-semibold">Author : </span>{" "}
               {post.authorName || "Unknown Author"}
             </p>
           </figcaption>
@@ -108,8 +114,8 @@ export default function Post({ post }: { post: SanityDocument }) {
           </article>
         </section>
         {/* Right Social Share - Sticky */}
-        <section className="col-span-1 p-4 min-h-[30rem] sticky top-10 h-screen overflow-y-auto">
-          <div className="sticky top-26">
+        <section className="col-span-1 p-4 min-h-[30rem] sticky top-[6rem] h-screen overflow-y-auto z-10">
+          <div className="sticky top-[.9rem]">
             <header className="text-foreground mb-12 border-l-4 rounded-sm border-foreground/90 px-2 title font-semibold ">
               Recently Published
             </header>
@@ -120,3 +126,4 @@ export default function Post({ post }: { post: SanityDocument }) {
     </div>
   );
 }
+export const dynamic = "force-dynamic"; // Ensure the page is always revalidated

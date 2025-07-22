@@ -4,7 +4,7 @@ import { client } from "@/sanity/lib/client";
 import { notFound } from "next/navigation";
 import { postQuery, postPathsQuery } from "@/sanity/lib/queries";
 import Post from "@/app/NativeComponents/blog/Post";
-//import Post from "@/app/NativeComponents/Post";
+
 
 //set revalidation interval for ISR
 

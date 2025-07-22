@@ -18,7 +18,7 @@ export default function Navbar() {
     { name: "Contact Us", href: "/contact" },
   ];
   return (
-    <header className="w-full shadow py-10 fixed top-0 h-[7rem] opacity-100 bg-background">
+    <header className="w-full shadow py-10 fixed top-0 h-[7rem] opacity-100 bg-background z-50">
       {/* Ensure the navbar container has the same width as the body */}
       <div className="w-full mx-auto max-w-full lg:max-w-[1240px]  flex items-center justify-between gap-6 px-4 md:px-2 lg:px-3">
         <nav className="font-bold text-[20px]">
