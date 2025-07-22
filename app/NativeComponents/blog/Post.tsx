@@ -9,7 +9,7 @@ import { format } from "date-fns";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/sanity/lib/client";
 import RecentPosts from "./recent-posts";
-
+import CommentForm from "./comment-form";
 const builder = imageUrlBuilder(client);
 const urlFor = (source: string) => {
   return builder.image(source);
@@ -19,6 +19,12 @@ type Category = {
   title: string;
   description: string;
 };
+
+type Comment = {
+  name: string;
+  email: string;
+  comment: string;
+}
 
 export default function Post({ post }: { post: SanityDocument }) {
   if (!post) return <p>Loading ...</p>;
@@ -112,6 +118,24 @@ export default function Post({ post }: { post: SanityDocument }) {
               />
             )}
           </article>
+          {post.comments.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-xl font-bold mb-4">Comments</h3>
+              {post.comments.map((c: Comment, i: number) => (
+                <div key={i} className="mb-4 border-b pb-2">
+                  <p className="text-sm text-gray-700">
+                    <strong>{c.name}</strong> wrote:
+                  </p>
+                  <p>{c.comment}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-8">
+            <h3 className="text-2xl font-semibold mb-4">Leave a Comment</h3>
+            <CommentForm postId={post._id} />
+          </div>
         </section>
         {/* Right Social Share - Sticky */}
         <section className="col-span-1 p-4 min-h-[30rem] sticky top-[6rem] h-screen overflow-y-auto z-10">

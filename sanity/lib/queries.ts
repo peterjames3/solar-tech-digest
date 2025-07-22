@@ -26,6 +26,13 @@ export const postQuery = groq`
     "imageURL": mainImage.asset->url,
     "authorName": author->name,
     "categories": categories[]->{title, description},
+     "comments": *[
+      _type == "comment" &&
+      post._ref == ^._id &&
+      approved == true
+    ]{
+      name, comment, _createdAt
+    },
     body, // Full body content for PortableText rendering
     // Extract headings for table of contents
     "headings": body[][
