@@ -115,6 +115,12 @@ export default function LatestSolarPostsCarousel({
 
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60" />
             <div className="absolute bottom-4 left-4 text-white z-10 pr-5">
+              <div className=" w-[9rem] text-textColor font-medium rounded-md bg-tertiary px-3 py-2 text-center mb-2 ">
+                {Array.isArray(post.categories)
+                  ? post.categories.join(", ")
+                  : post.categories}
+              </div>
+
               <Link
                 href={`/${post.slug.current}`}
                 className="text-sm font-semibold hover:underline"

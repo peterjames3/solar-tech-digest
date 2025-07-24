@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 //import { inter } from '@/app/ui/font';
 import "../globals.css";
 import Navbar from "@/app/ui/Navbar";
+import Footer from "@/app/ui/Footer";
+import ScrollToTop from "@/app/ui/scroll-to-top";
 
 export const metadata: Metadata = {
   title: " SolarTechDigest",
@@ -42,6 +44,8 @@ export default function RootLayout({
       <body>
         <Navbar />
         <main className="">{children}</main>
+        <ScrollToTop />
+        <Footer />
         {/* <SanityLive /> */}
       </body>
     </html>
