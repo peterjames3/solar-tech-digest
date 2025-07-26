@@ -71,7 +71,7 @@ export const allSolarPosts = groq`*[_type == "posts"] | order(_createdAt, desc){
 
 // Get the latest posts by published date, limited to the first 5 posts
 export const latestPostsQuery = groq`
-  *[_type == "post"] | order(_createdAt desc) [0...8] {
+  *[_type == "post"] | order(_createdAt desc) [0...6] {
   _id,
     _createdAt,
     title,
@@ -124,7 +124,7 @@ export const invertersPosts = groq`
   }
 `;
 export const solarPanelsPostsQuery = groq`
-  *[_type == 'post' && 'Solar Panels' in categories[]->slug.current] | order(_createdAt desc) {
+  *[_type == 'post' && 'solar-panels' in categories[]->slug.current] | order(_createdAt desc) {
     _id,
     _createdAt,
     title, 
@@ -149,6 +149,9 @@ export const batteriesPostsQuery = groq`
     "authorName": author->name
   }
 `;
+
+
+
 export const newsPosts = groq`
 *[_type == 'post' && "news" in categories[]->slug.current
 ] | order(_createdAt desc) {

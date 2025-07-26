@@ -17,7 +17,7 @@ export default function LatestsSolarPosts({
         {/* Featured Section */}
         <section>
           <div className="flex items-center justify-between">
-            <header className="border-l-4 rounded-sm border-[#211F21] px-6  text-xl md:text-2xl font-semibold">
+            <header className="border-l-4 rounded-md border-[#211F21] px-6  text-xl md:text-2xl font-semibold">
               Featured Insights on Solar
             </header>
             <div className="">
