@@ -9,6 +9,7 @@ export const postsQuery = groq`
    _createdAt,
    description,
     title,
+    abstract,
    slug,
    mainImage,
   "imageURL": mainImage.asset->url,
@@ -58,6 +59,7 @@ export const allSolarPosts = groq`*[_type == "posts"] | order(_createdAt, desc){
    _id,
    _createdAt,
    title,
+   abstract,
    slug,
    "categories": categories[]->title,
    mainImage,
@@ -73,6 +75,7 @@ export const latestPostsQuery = groq`
   _id,
     _createdAt,
     title,
+    abstract,
     slug,
     body,
     "categories": categories[]->
@@ -111,7 +114,8 @@ export const invertersPosts = groq`
   *[_type == 'post' && 'inverters' in categories[]->slug.current] | order(_createdAt desc) {
     _id,
     _createdAt,
-    title,        
+    title,
+    abstract,        
     slug,
     "categories": categories[]->title,
     mainImage,
@@ -120,10 +124,11 @@ export const invertersPosts = groq`
   }
 `;
 export const solarPanelsPostsQuery = groq`
-  *[_type == 'post' && 'Solar Panels' in categories[]->title] | order(_createdAt desc) {
+  *[_type == 'post' && 'Solar Panels' in categories[]->slug.current] | order(_createdAt desc) {
     _id,
     _createdAt,
-    title,        
+    title, 
+    abstract,       
     slug,
     "categories": categories[]->title,
     mainImage,
@@ -132,10 +137,11 @@ export const solarPanelsPostsQuery = groq`
   }
 `;
 export const batteriesPostsQuery = groq`
-  *[_type == 'post' && 'Batteries' in categories[]->title] | order(_createdAt desc) {
+  *[_type == 'post' && 'Batteries' in categories[]->slug.current] | order(_createdAt desc) {
     _id,
     _createdAt,
-    title,        
+    title,
+    abstract,        
     slug,
     "categories": categories[]->title,
     mainImage,
@@ -143,12 +149,27 @@ export const batteriesPostsQuery = groq`
     "authorName": author->name
   }
 `;
+export const newsPosts = groq`
+*[_type == 'post' && "news" in categories[]->slug.current
+] | order(_createdAt desc) {
+  _id,
+  _createdAt,
+  title,
+  abstract,
+  slug,
+  "categories": categories[]->title,
+  mainImage,
+  "imageUrl": mainImage.asset->url,
+  "authorName": author->name  
+}
+`;
 
 // Fetch all categories with slugs
 export const allCategoriesQuery = `*[_type == 'category'] {
   _id,
   title,
-  slug
+  slug,
+  abstract
 }`;
 
 // Updated posts query using slugs
@@ -157,7 +178,8 @@ export const postsByCategoryQuery = (categorySlug: string) => {
     return `*[_type == 'post'] | order(_createdAt desc) {
       _id,
       _createdAt,
-      title,        
+      title,
+      abstract,        
       slug,
        body,
       "categories": categories[]->title,
@@ -172,7 +194,8 @@ export const postsByCategoryQuery = (categorySlug: string) => {
   ] | order(_createdAt desc) {
     _id,
     _createdAt,
-    title,        
+    title, 
+    abstract,       
     slug,
      body,
     "categories": categories[]->title,

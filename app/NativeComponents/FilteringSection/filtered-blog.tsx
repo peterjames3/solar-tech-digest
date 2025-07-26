@@ -18,6 +18,7 @@ interface Post {
   categories?: string[];
   authorName: string;
   _createdAt: string;
+  abstract?: string;
 }
 
 export default function FilteredBlog() {
@@ -79,6 +80,9 @@ export default function FilteredBlog() {
                     ))}
                   </div>
                   <h3 className="font-bold text-lg">{post.title}</h3>
+                  <p className="text-sm text-gray-600">
+                    {post.abstract || "No abstract available"}
+                  </p>
                   <div className="flex justify-between">
                     <p className="text-sm text-gray-500">{post.authorName}</p>
                     <span className="text-sm">
@@ -90,7 +94,7 @@ export default function FilteredBlog() {
                   <button className="">
                     <Link
                       href={`/${post.slug.current}`}
-                      className="bg-primary py-2 px-8  mb-2 block rounded-md text-background"
+                      className="bg-primary  hover:text-foreground py-2 px-8  mb-2 block rounded-md text-background transition-all delay-300"
                     >
                       Read More{" "}
                     </Link>
