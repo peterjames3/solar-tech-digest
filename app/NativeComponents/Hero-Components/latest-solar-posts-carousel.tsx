@@ -100,8 +100,8 @@ export default function LatestSolarPostsCarousel({
           >
             <Image
               src={
-                post.mainImage?.asset?._ref
-                  ? urlFor(post.mainImage.asset._ref)
+                post.mainImage
+                  ? urlFor(post.mainImage.imageUrl)
                       .width(1200)
                       .height(1500)
                       .url()
@@ -115,10 +115,15 @@ export default function LatestSolarPostsCarousel({
 
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-60" />
             <div className="absolute bottom-4 left-4 text-white z-10 pr-5">
-              <div className=" w-[9rem] text-textColor font-medium rounded-md bg-tertiary px-3 py-2 text-center mb-2 ">
-                {Array.isArray(post.categories)
-                  ? post.categories.join(", ")
-                  : post.categories}
+              <div className=" w-[9rem] text-foreground font-medium rounded-md bg-tertiary px-3 py-2 text-center mb-2 ">
+                {post.categories?.map((cat: string, i: number) => (
+                  <span
+                    key={i}
+                    className="text-foreground text-xs px-2 py-1 rounded"
+                  >
+                    {cat}
+                  </span>
+                ))}
               </div>
 
               <Link

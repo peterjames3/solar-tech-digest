@@ -12,6 +12,22 @@ const companies = [
   { name: "CanadianSolar", logo: "/CS-LOGO-RED-RGB-NEW-2024-W-TAG-2.png" },
   { name: "Loom Solar", logo: "/loom_solar_logo.png.png" },
   { name: "Sunrun", logo: "/sunrun_logo.svg.png" },
+  { name: "TAICO", logo: "/TAICO.webp" },
+  { name: "EastMan", logo: "/Eastman.webp" },
+  { name: "MODI", logo: "/modi.webp" },
+  { name: " WECO", logo: "/weco.webp" },
+  { name: "Schneider", logo: "/Schneider-Electric-logo-jpg-.webp" },
+  { name: "Suntree", logo: "/suntree.webp" },
+  { name: "Luminous", logo: "/luminous.webp" },
+  { name: "MUST", logo: "/must.webp" },
+  { name: "LONGI", logo: "/Longi_Silicon_Materials_logo.webp" },
+  { name: "HOBER", logo: "/HOBER.webp" },
+  { name: "Growatt", logo: "/Growatt-Logo.webp" },
+  { name: "SAY-DEYE", logo: "/SA-Deye-logo.webp" },
+  {
+    name: "Huawei",
+    logo: "/huawei-02233uyg-kit-kit-di-ricambi-per-inverter-sun2000-12-25ktl-mb0.webp",
+  },
 ];
 
 export default function FeaturedCompany() {
